@@ -58,12 +58,12 @@ const App = () => {
 
     // get contract interface
     const erc721Interface = new ethers.utils.Interface([
-      "function mint(address _to)",
+      "function mint(address _targetAddress)",
     ]);
 
-    const erc721Data = erc721Interface.encodeFunctionData("mint", ["0x7010F7Ac55A64Ca6b48CDC7C680b1fb588dF439f"]);
+    const erc721Data = erc721Interface.encodeFunctionData("mint", [etherspotWalletAddress]);
     await primeSdk.addUserOpsToBatch({
-      to: etherspotWalletAddress,
+      to: "0x7010F7Ac55A64Ca6b48CDC7C680b1fb588dF439f",
       data: erc721Data,
     });
 
